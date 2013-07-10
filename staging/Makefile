@@ -1,6 +1,6 @@
 # Makefile for staging directory
 
-CONFIG_DRM_INTEL_CDV=m
+CONFIG_DRM_INTEL_CDV=y
 CONFIG_DRM_CDV_RELEASE=y
 # CONFIG_DRM_CDV_DEBUG is not set
 
