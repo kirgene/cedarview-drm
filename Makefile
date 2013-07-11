@@ -5,6 +5,7 @@
 export CONFIG_STAGING=y
 export CONFIG_DRM_INTEL_CDV=y
 export CONFIG_DRM_CDV_RELEASE=y
+export CONFIG_DRM_TTM=y
 unexport CONFIG_DRM_PSB_CDV
 
 ccflags-y := -I$(KMYDIR)/include
