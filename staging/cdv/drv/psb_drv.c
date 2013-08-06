@@ -1180,7 +1180,9 @@ static int psb_dpst_bl_ioctl(struct drm_device *dev, void *data,
 {
 	struct drm_psb_private *dev_priv = psb_priv(dev);
 	uint32_t *arg = data;
+#ifdef CONFIG_BACKLIGHT_CLASS_DEVICE
 	struct backlight_device bd;
+#endif
 	dev_priv->blc_adj2 = *arg;
 
 #ifdef CONFIG_BACKLIGHT_CLASS_DEVICE
@@ -1195,7 +1197,9 @@ static int psb_adb_ioctl(struct drm_device *dev, void *data,
 {
 	struct drm_psb_private *dev_priv = psb_priv(dev);
 	uint32_t *arg = data;
+#ifdef CONFIG_BACKLIGHT_CLASS_DEVICE
 	struct backlight_device bd;
+#endif
 	dev_priv->blc_adj1 = *arg;
 
 #ifdef CONFIG_BACKLIGHT_CLASS_DEVICE
