@@ -60,7 +60,9 @@ module_param_named(timestamp_precision_usec, drm_timestamp_precision, int, 0600)
 struct idr drm_minors_idr;
 
 struct class *drm_class;
+#if 0
 struct proc_dir_entry *drm_proc_root;
+#endif
 struct dentry *drm_debugfs_root;
 
 int drm_err(const char *func, const char *format, ...)
@@ -358,6 +360,7 @@ int drm_get_minor(struct drm_device *dev, struct drm_minor **minor, int type)
 
 	idr_replace(&drm_minors_idr, new_minor, minor_id);
 
+#if 0
 	if (type == DRM_MINOR_LEGACY) {
 		ret = drm_proc_init(new_minor, minor_id, drm_proc_root);
 		if (ret) {
@@ -365,6 +368,7 @@ int drm_get_minor(struct drm_device *dev, struct drm_minor **minor, int type)
 			goto err_mem;
 		}
 	} else
+#endif
 		new_minor->proc_root = NULL;
 
 #if defined(CONFIG_DEBUG_FS)
@@ -388,8 +392,10 @@ int drm_get_minor(struct drm_device *dev, struct drm_minor **minor, int type)
 
 
 err_g2:
+#if 0
 	if (new_minor->type == DRM_MINOR_LEGACY)
 		drm_proc_cleanup(new_minor, drm_proc_root);
+#endif
 err_mem:
 	kfree(new_minor);
 err_idr:
@@ -413,9 +419,10 @@ int drm_put_minor(struct drm_minor **minor_p)
 	struct drm_minor *minor = *minor_p;
 
 	DRM_DEBUG("release secondary minor %d\n", minor->index);
-
+#if 0
 	if (minor->type == DRM_MINOR_LEGACY)
 		drm_proc_cleanup(minor, drm_proc_root);
+#endif
 #if defined(CONFIG_DEBUG_FS)
 	drm_debugfs_cleanup(minor);
 #endif
