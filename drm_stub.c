@@ -60,9 +60,7 @@ module_param_named(timestamp_precision_usec, drm_timestamp_precision, int, 0600)
 struct idr drm_minors_idr;
 
 struct class *drm_class;
-#if 0
 struct proc_dir_entry *drm_proc_root;
-#endif
 struct dentry *drm_debugfs_root;
 
 int drm_err(const char *func, const char *format, ...)
